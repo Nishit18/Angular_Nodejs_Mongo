@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
+const path = require('path');
 
 // const Post = require('./models/post');
 const postRoutes = require("./routes/posts");
@@ -29,6 +30,7 @@ mongoose.connect('mongodb+srv://admin:Y6QwIeAM8T8aVOIK@cluster0-otdjn.mongodb.ne
 // For convert request data in to json from stream of strings
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
+app.use("/images", express.static(path.join("backend/images")));
 
 // For enable cors policy
 app.use((req, res, next) => {
@@ -125,6 +127,6 @@ app.use((req, res, next) => {
 //     })
 // });
 
-app.use("/api/posts/",postRoutes);
+app.use("/api/posts/", postRoutes);
 
 module.exports = app;
