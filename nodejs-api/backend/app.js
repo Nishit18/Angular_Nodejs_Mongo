@@ -135,8 +135,9 @@ app.use("/api/user/", userRoutes);
 // Below code is used when you are deploy your angular and node js application
 // on same url or same host so if path not contain /api then it will be redirect
 // to angular folder index.html file which is root for angular project
+// app.use("/", express.static(path.join(__dirname, "angular", "index.html")));
 // app.use((req, res, next) => {
-//     res.sendFile(path.join("angular","index.html"));
+//     res.sendFile(path.join(__dirname, "angular", "index.html"));
 // });
 
 module.exports = app;
